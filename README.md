@@ -1,4 +1,4 @@
-# Set up kubernetes monitoring #
+# Set up kubernetes monitoring(Ephemeral)
 
 
 ### Create a namespace
@@ -12,8 +12,10 @@
 
 ## NOTE:- Grafana pod will be created by the prometheus Operator
 
-`helm repo add stable https://kubernetes-charts.storage.googleapis.com/`
-`helm install prometheus stable/prometheus-operator`
+```
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+helm install prometheus stable/prometheus-operator
+```
 
 ## sample ingress file
 ```
