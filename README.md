@@ -16,8 +16,8 @@
 `helm install prometheus stable/prometheus-operator`
 
 ## sample ingress file
-
-```apiVersion: extensions/v1beta1
+```
+apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: grafana
@@ -29,6 +29,7 @@ spec:
       - backend:
           serviceName: prometheus-grafana
           servicePort: 80
+```
+## Create the ingress
 
-## Create the ingress 
 `kubectl create -f ingress.yaml`
