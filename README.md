@@ -1,13 +1,23 @@
-# Set up kubernetes monitoring
+# Set up kubernetes monitoring #
 
-## `kubectl create namespace monitoring`
-## `kubectl config set-context --current --namespace=monitoring`
-## `helm repo add stable https://kubernetes-charts.storage.googleapis.com/`
-## `helm install prometheus stable/prometheus-operator`
 
-## Create a ingress file
+### Create a namespace
+`kubectl create namespace monitoring`
 
-`apiVersion: extensions/v1beta1
+
+### Jump to the monitoring namespace
+`kubectl config set-context --current --namespace=monitoring`
+
+### Add the prometheus-grafana repository
+
+## NOTE:- Grafana pod will be created by the prometheus Operator
+
+`helm repo add stable https://kubernetes-charts.storage.googleapis.com/`
+`helm install prometheus stable/prometheus-operator`
+
+## sample ingress file
+
+```apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: grafana
@@ -18,6 +28,7 @@ spec:
       paths:
       - backend:
           serviceName: prometheus-grafana
-          servicePort: 80`
+          servicePort: 80
 
-## `kubectl create -f ingress.yaml`
+## Create the ingress 
+`kubectl create -f ingress.yaml`
